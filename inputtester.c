@@ -34,7 +34,7 @@ if (fgets(uName, 20, stdin) != NULL) {
 //Gender Selection
 int genChoiceLoop = 1;
 while(genChoiceLoop == 1){				
-printf("What is your Gender? ('M'ale, 'F'emale, or 'O'ther) "); 
+printf("What is your Gender? ('M'ale, 'F'emale, or 'O'ther) ");					 
 if (fgets(uGender, 3, stdin) != NULL) { 
 		if (!strchr(uGender, '\n')) { // consume rest of chars up to '\n' 
 				int ch; while (((ch = getchar()) != EOF) && (ch != '\n')) /* void */; 
@@ -49,28 +49,29 @@ if (fgets(uGender, 3, stdin) != NULL) {
 //Class Selection
 int classChoiceLoop = 1;
 while(classChoiceLoop == 1){								
-printf("What is your Class? ('B'rute, 'S'tranger, 'T'hief) "); 
-if (fgets(uClass, 10, stdin) != NULL) { 
+printf("What is your Class? ('B'rute, 'S'tranger, 'T'hief) ");							 
+if (fgets(uClass, 10, stdin	) != NULL) { 
 		if (!strchr(uClass, '\n')) { // consume rest of chars up to '\n' 
 				int ch; while (((ch = getchar()) != EOF) && (ch != '\n')) /* void */; 
 				if (ch == EOF) /* input error */; 
-				printf("You are now a: %s \n", uClass); 
-				} else { 
+				  printf("You are now a brute: %s \n", uClass);					 
+				} else{
 										printf("You are now a: %s \n", uClass); // name includes ENTER
-										classChoiceLoop = 0; 
+										classChoiceLoop = 0;																					 
 				} //if else
-		}//if					
+		}//if								
 }	//Class while
 				int confirmLooper = 1;
 				while(confirmLooper == 1){
            system("clear");
-						printf("Your chosen Name is: %s", uName);
-						printf("Your Gender is: %s", uGender);						
-						printf("Your chosen class is: %s \n", uClass);    
+					 printf("Your chosen Name is: %s", uName);
+					 printf("Your Gender is: %s", uGender);						
+					 printf("Your chosen class is: %s \n", uClass);    
 				   puts("Do you wish to proceed or would you like to redo your Character?");
 				   puts("Press 'y' to continue to game, 'n' to redo your character\n");
 			  char uContinue = getchar();
-				getchar();
+				//getchar();
+				int chSecond; while (((chSecond = getchar()) != EOF) && (chSecond != '\n')) /* void */;		
 				if(tolower(uContinue) == 'y'){
 						puts("You have decided to begin your journey.\n");
 						sleep(1);
