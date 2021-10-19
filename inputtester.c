@@ -61,18 +61,31 @@ if (fgets(uClass, 10, stdin) != NULL) {
 				} //if else
 		}//if					
 }	//Class while
-				puts("Do you wish to proceed or would you like to redo your Character?\n");
+				int confirmLooper = 1;
+				while(confirmLooper == 1){
+           system("clear");
+						printf("Your chosen Name is: %s", uName);
+						printf("Your Gender is: %s", uGender);						
+						printf("Your chosen class is: %s \n", uClass);    
+				   puts("Do you wish to proceed or would you like to redo your Character?");
+				   puts("Press 'y' to continue to game, 'n' to redo your character\n");
 			  char uContinue = getchar();
 				getchar();
 				if(tolower(uContinue) == 'y'){
 						puts("You have decided to begin your journey.\n");
 						sleep(1);
+						confirmLooper = 0;		
 						looper = 1;
-				}else if(tolower(uContinue == 'n')){
+				}else if(tolower(uContinue == 'n')){	
 						puts("Resetting your character. . . \n");
 						sleep(1);
-						looper = 0;
-				}//else if 												
+						confirmLooper = 0;					
+						looper = 0;								
+				}else{				
+						puts("Invlid Entry - - Try again.");
+						sleep(1);		
+				}//else if
+			}//confirmLooper		while	 												
 }	//Main while		
 		return 0;
 }		
