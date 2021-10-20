@@ -8,7 +8,9 @@ their character. This will be transferred over to the character struct later on.
 
 int main(){
 		char uName[20];
-		char uGender[3];
+		char uGenderLetter;
+		char uGender[10];
+		char uClassLetter;
 		char uClass[10];
 		int looper = 0;
 
@@ -23,8 +25,7 @@ if (fgets(uName, 20, stdin) != NULL) {
 		if (!strchr(uName, '\n')) { // consume rest of chars up to '\n' 
 				int ch; while (((ch = getchar()) != EOF) && (ch != '\n')) /* void */; 
 				if (ch == EOF) /* input error */; 
-				printf("Your name is too long, try again. . .  \n" ); 
-				//nameChoiceLoop = 1;						
+				printf("Your name is too long, try again. . .  \n" );			
 				} else{ 
 										printf("Your name is: %s", uName); // name includes ENTER 
 										nameChoiceLoop = 0;
@@ -34,43 +35,56 @@ if (fgets(uName, 20, stdin) != NULL) {
 //Gender Selection
 int genChoiceLoop = 1;
 while(genChoiceLoop == 1){				
-printf("What is your Gender? ('M'ale, 'F'emale, or 'O'ther) ");					 
-if (fgets(uGender, 3, stdin) != NULL) { 
-		if (!strchr(uGender, '\n')) { // consume rest of chars up to '\n' 
-				int ch; while (((ch = getchar()) != EOF) && (ch != '\n')) /* void */; 
-				if (ch == EOF) /* input error */; 
-				printf("Only enter one letter for your gender. Try again. . . \n"); 
-				} else { 
-										printf("You selected: %s", uGender); // name includes ENTER 
-										genChoiceLoop = 0;
-				} //if else
-		}//if	
+puts("What is your gender?('M'ale, 'F'emale, or 'O'ther)");
+		uGenderLetter	= getchar();
+		int uGenderch; while (((uGenderch = getchar()) != EOF) && (uGenderch != '\n')) /* void */;
+		if(tolower(uGenderLetter) == 'm'){
+						puts("You are a Male.");
+						strcpy(uGender, "Male");		
+						genChoiceLoop = 0;								
+				}else if(tolower(uGenderLetter) == 'f'){
+						puts("You are a Female");
+						strcpy(uGender, "Female");		
+						genChoiceLoop = 0;		
+				}	else if(tolower(uGenderLetter) == 'o'){
+						puts("You are an Other");
+						strcpy(uGender, "Other");		
+						genChoiceLoop = 0;		
+				}	else{
+						puts("Wrong selection");
+				}	
 }//Gender while
-//Class Selection
+//Class Selection			
 int classChoiceLoop = 1;
-while(classChoiceLoop == 1){								
-printf("What is your Class? ('B'rute, 'S'tranger, 'T'hief) ");							 
-if (fgets(uClass, 10, stdin	) != NULL) { 
-		if (!strchr(uClass, '\n')) { // consume rest of chars up to '\n' 
-				int ch; while (((ch = getchar()) != EOF) && (ch != '\n')) /* void */; 
-				if (ch == EOF) /* input error */; 
-				  printf("You are now a brute: %s \n", uClass);					 
-				} else{
-										printf("You are now a: %s \n", uClass); // name includes ENTER
-										classChoiceLoop = 0;																					 
-				} //if else
-		}//if								
+while(classChoiceLoop == 1){	
+		puts("What is your Class? ('B'rute, 'S'tranger, 'T'hief?)");
+		uClassLetter = getchar();
+		int uClassch; while (((uClassch = getchar()) != EOF) && (uClassch != '\n')) /* void */;
+		if(tolower(uClassLetter) == 'b'){
+		    puts("Your class is: Brute");
+				strcpy(uClass, "Brute");    				
+				classChoiceLoop = 0;				
+		}else if(tolower(uClassLetter) == 's'){
+						puts("Your class is: Stranger");
+						strcpy(uClass, "Stranger");		
+						classChoiceLoop = 0;							
+				}else if(tolower(uClassLetter) == 't'){
+						puts("Your class is: Thief");
+						strcpy(uClass, "Thief");		
+						classChoiceLoop = 0;								
+				}else{
+						puts("Wrong selection -- Try again. . .");
+				}//else if
 }	//Class while
 				int confirmLooper = 1;
 				while(confirmLooper == 1){
-           system("clear");
-					 printf("Your chosen Name is: %s", uName);
-					 printf("Your Gender is: %s", uGender);						
-					 printf("Your chosen class is: %s \n", uClass);    
+						system("clear");
+					 printf("Your chosen Name is: '%s' \n", uName);
+					 printf("Your Gender is: '%s' \n", uGender);						
+					 printf("Your chosen class is: '%s' \n", uClass);    
 				   puts("Do you wish to proceed or would you like to redo your Character?");
 				   puts("Press 'y' to continue to game, 'n' to redo your character\n");
 			  char uContinue = getchar();
-				//getchar();
 				int chSecond; while (((chSecond = getchar()) != EOF) && (chSecond != '\n')) /* void */;		
 				if(tolower(uContinue) == 'y'){
 						puts("You have decided to begin your journey.\n");
@@ -84,6 +98,7 @@ if (fgets(uClass, 10, stdin	) != NULL) {
 						looper = 0;								
 				}else{				
 						puts("Invlid Entry - - Try again.");
+						system("clear");		
 						sleep(1);		
 				}//else if
 			}//confirmLooper		while	 												
